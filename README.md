@@ -12,10 +12,10 @@ Mux-Mesh is a comprehensive spatio-temporal data workspace designed for building
 ## 🚀 Quick Start
 
 **New to Mux-Mesh?** Start here:
-1. 📖 **[Architecture Overview](#-architecture-overview)** - Understand the system design
-2. 🔧 **[Core Projects](#-core-projects)** - Explore the main components  
-3. 📚 **[Guides & References](#-guides--references)** - Learn how to use the system
-4. 🔍 **[Quick Navigation](#-quick-navigation)** - Find what you need fast
+1. 📖 **[Architecture Overview](#architecture-overview)** - Understand the system design
+2. 🔧 **[Core Projects](#core-projects)** - Explore the main components  
+3. 📚 **[Guides & References](#guides--references)** - Learn how to use the system
+4. 🔍 **[Quick Navigation](#quick-navigation)** - Find what you need fast
 
 ## 📚 Documentation Index
 
@@ -66,27 +66,43 @@ Essential documentation for users and developers:
 ### System Components
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   API Gateway   │    │   Overture API  │    │  TomTom Flow   │
-│                 │    │                 │    │       API      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │  Core Services  │
-                    │   & Utilities   │
-                    └─────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │ Data Pipelines  │
-                    │   (TomTom)      │
-                    └─────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │   BigQuery      │
-                    │  Data Warehouse │
-                    └─────────────────┘
+                              🌐 API Layer
+    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+    │   API Gateway   │    │  Overture Maps  │    │  TomTom Flow    │
+    │      🚪         │    │      🗺️          │    │      🚦         │
+    │ • Routing       │    │ • Places Data   │    │ • Traffic Data  │
+    │ • Auth          │    │ • Semantic Map  │    │ • Real-time     │
+    │ • Rate Limit    │    │ • POI Queries   │    │ • Analytics     │
+    └─────────────────┘    └─────────────────┘    └─────────────────┘
+             │                       │                       │
+             └───────────────────────┼───────────────────────┘
+                                     │
+                              🔧 Processing Layer
+                         ┌─────────────────┐
+                         │  Core Services  │
+                         │      🛠️         │
+                         │ • Logging       │
+                         │ • Utilities     │
+                         │ • Shared Tools  │
+                         └─────────────────┘
+                                     │
+                              🔄 Pipeline Layer
+                         ┌─────────────────┐
+                         │ TomTom Pipeline │
+                         │      📊         │
+                         │ • Data Collect  │
+                         │ • OpenLR Proc   │
+                         │ • Scheduling    │
+                         └─────────────────┘
+                                     │
+                              💾 Storage Layer
+                         ┌─────────────────┐
+                         │    BigQuery     │
+                         │      🏢         │
+                         │ • Data Warehouse│
+                         │ • Partitioning  │
+                         │ • Analytics     │
+                         └─────────────────┘
 ```
 
 ### 🌐 API Services Layer
@@ -128,7 +144,7 @@ Essential documentation for users and developers:
 
 | 🎯 I want to... | 📍 Go here |
 |------------------|------------|
-| **Understand the system** | [Architecture Overview](#-architecture-overview) |
+| **Understand the system** | [Architecture Overview](#architecture-overview) |
 | **Set up API gateway** | [Gateway Documentation](projects/apis/gateway/README.md) |
 | **Work with maps data** | [Overture Maps Guide](projects/apis/overture/README.md) |
 | **Process traffic data** | [TomTom Flow API](projects/apis/tomtom-flow/README.md) |

@@ -43,7 +43,7 @@ proj/apis/overture/
 
 Counts the number of places (Points of Interest) of a specific category that fall within a given geometry. The user-provided category is semantically mapped to an official Overture category before querying.
 
-**Geography Input**: Supports multiple input formats including ZIP codes, DMA codes, coordinates, WKT, and H3 indices. See the [Geography Input Documentation](../../docs/geography-input.md) for complete details on all supported types and examples.
+**Geography Input**: Supports multiple input formats including ZIP codes, DMA codes, coordinates, WKT, and H3 indices. See the [Geography Input Documentation](../../guides/geography-input.md) for complete details on all supported types and examples.
 
 **Request Body (`PlaceQueryRequest`):**
 ```json

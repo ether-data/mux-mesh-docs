@@ -39,7 +39,7 @@ Health check endpoint.
 
 Query real-time traffic summary, including average relative speed and overall traffic condition, for a given geography. Optionally includes detailed traffic segments.
 
-**Geography Input**: Supports multiple input formats including ZIP codes, coordinates, WKT polygons, and H3 indices. See the [Geography Input Documentation](../../docs/geography-input.md) for complete details on all supported types and examples.
+**Geography Input**: Supports multiple input formats including ZIP codes, coordinates, WKT polygons, and H3 indices. See the [Geography Input Documentation](../../guides/geography-input.md) for complete details on all supported types and examples.
 
 **Request Body (`TrafficSummaryRequest`):**
 ```json
