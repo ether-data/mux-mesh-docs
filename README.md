@@ -1,130 +1,170 @@
-# Mux-Mesh: Spatio-Temporal Data Workspace
+# Mux-Mesh Documentation
 
-A monorepo workspace for spatio-temporal projects, providing shared utilities and infrastructure for building scalable data processing solutions on Google Cloud.
+> **Comprehensive documentation for the Mux-Mesh spatio-temporal data workspace**
 
-## Overview
+[![GitHub](https://img.shields.io/badge/Source-GitHub-blue)](https://github.com/ether-data/mux-mesh)
+[![Documentation](https://img.shields.io/badge/Docs-Latest-green)](https://github.com/etheterra/mux-mesh-docs)
 
-Mux-Mesh is an umbrella workspace that houses multiple spatio-temporal projects, each with their own specific purpose and deployment configurations. The workspace provides shared core utilities, logging infrastructure, and development tooling to accelerate development.
+## 🌟 Welcome
 
-## Available Projects
+Mux-Mesh is a comprehensive spatio-temporal data workspace designed for building scalable data processing solutions on Google Cloud Platform. This documentation provides detailed guides, API references, and architectural insights for all components within the ecosystem.
 
-### Core Utilities (`proj/core/`)
-Shared infrastructure and utilities used across all pipeline projects.
+## 🚀 Quick Start
 
-**Features:**
-- Standardized logging configuration for local and Cloud environments
-- Common utilities for data processing
-- Shared development tooling and configurations
+**New to Mux-Mesh?** Start here:
+1. 📖 **[Architecture Overview](#-architecture-overview)** - Understand the system design
+2. 🔧 **[Core Projects](#-core-projects)** - Explore the main components  
+3. 📚 **[Guides & References](#-guides--references)** - Learn how to use the system
+4. 🔍 **[Quick Navigation](#-quick-navigation)** - Find what you need fast
 
-### [APIs Gateway](proj/apis/gateway/README.md)
-API gateway service for managing and routing requests to various data processing services.
+## 📚 Documentation Index
 
-### [Overture](proj/apis/overture/README.md)
-Overture Maps data processing and API service.
+### 🔧 Core Projects
 
-### [TomTom Flow](proj/apis/tomtom_flow/README.md)
-TomTom traffic flow data processing API service.
+#### 🌐 API Services
+Our microservices architecture provides specialized data processing capabilities:
 
-### [TomTom Traffic Pipeline](proj/tomtom_intermediate_traffic/README.md)
-Real-time traffic data pipeline for collecting and processing TomTom traffic flow data.
+- **[🚪 APIs Gateway](projects/apis/gateway/README.md)**
+  - Central API gateway for request routing and management
+  - Authentication, rate limiting, and load balancing
+  - **[📋 Deployment Guide](projects/apis/gateway/deployment.md)**
 
-**Features:**
-- Fetches live traffic flow data from TomTom Intermediate Traffic API
-- Processes OpenLR binary data and converts to WKT geometry
-- Loads data into BigQuery with efficient staging and partitioning
-- Automated scheduling with Cloud Run Jobs and Cloud Scheduler
-- Intelligent conditional requests to minimize API usage
+- **[🗺️ Overture Maps](projects/apis/overture/README.md)**
+  - Open geographic data processing and serving
+  - Overture Maps data integration and API endpoints
+  - Spatial data queries and visualization support
 
-**Quick Start:**
-```bash
-# Deploy to Google Cloud
-./proj/tomtom_intermediate_traffic/deployment/deploy.sh your-project-id us-central1
+- **[🚦 TomTom Flow](projects/apis/tomtom-flow/README.md)**
+  - Real-time traffic flow data processing API
+  - TomTom API integration and data transformation
+  - Historical and live traffic analytics
 
-# Run locally
-./proj/tomtom_intermediate_traffic/run-local.sh
-```
+#### 🔄 Data Pipelines
+Automated data collection and processing workflows:
 
-See [`proj/tomtom_intermediate_traffic/README.md`](proj/tomtom_intermediate_traffic/README.md) for detailed documentation.
+- **[📊 TomTom Traffic Pipeline](projects/tomtom-intermediate-traffic/README.md)**
+  - Real-time traffic data collection from TomTom Intermediate Traffic API
+  - OpenLR binary data processing and WKT geometry conversion
+  - BigQuery integration with intelligent staging and partitioning
 
-## Getting Started
+### 📖 Guides & References
 
-### Prerequisites
-- [uv](https://docs.astral.sh/uv/) for Python dependency management
-- Google Cloud CLI authenticated: `gcloud auth application-default login`
-- Python 3.12+
+Essential documentation for users and developers:
 
-### Workspace Setup
-```bash
-# Clone the repository
-git clone <repository-url>
-cd mux-mesh
+- **[🌍 Geography Input Guide](guides/geography-input.md)**
+  - Comprehensive guide for handling geographic input data
+  - Coordinate systems, projections, and data formats
+  - Best practices for spatial data processing
 
-# Install workspace dependencies
-uv sync --all-projects
+- **[🛠️ Utilities & Scripts](utilities/scripts.md)**
+  - Documentation for utility scripts and development tools
+  - Automation helpers and maintenance scripts
+  - Development workflow enhancements
 
-# Copy environment template
-cp env.example .env
-# Edit .env with your settings
-```
+## 🏗️ Architecture Overview
 
-## Project Structure
+### System Components
 
 ```
-mux-mesh/                                        # Workspace root
-├── proj/                                        # Project directory
-│   ├── apis/                                    # API services
-│   │   ├── gateway/                             # APIs gateway service
-│   │   │   └── README.md                       # Gateway documentation
-│   │   ├── overture/                            # Overture Maps API service
-│   │   │   └── README.md                       # Overture documentation
-│   │   └── tomtom_flow/                         # TomTom flow API service
-│   │       └── README.md                       # TomTom flow documentation
-│   ├── core/                                    # Shared utilities and logging
-│   │   ├── src/core/
-│   │   │   └── logging_config.py               # Standardized logging setup
-│   │   └── pyproject.toml                      # Core project dependencies
-│   └── tomtom_intermediate_traffic/             # TomTom traffic pipeline
-│       ├── src/tomtom/traffic_flow/             # Pipeline source code
-│       ├── deployment/                          # Cloud deployment configs
-│       ├── Dockerfile                           # Container configuration
-│       ├── run-local.sh                         # Local development script
-│       └── README.md                            # Project-specific documentation
-├── pyproject.toml                               # Workspace configuration
-├── uv.lock                                      # Dependency lock file
-├── env.example                                  # Environment template
-└── README.md                                    # This file
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   API Gateway   │    │   Overture API  │    │  TomTom Flow   │
+│                 │    │                 │    │       API      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 │
+                    ┌─────────────────┐
+                    │  Core Services  │
+                    │   & Utilities   │
+                    └─────────────────┘
+                                 │
+                    ┌─────────────────┐
+                    │ Data Pipelines  │
+                    │   (TomTom)      │
+                    └─────────────────┘
+                                 │
+                    ┌─────────────────┐
+                    │   BigQuery      │
+                    │  Data Warehouse │
+                    └─────────────────┘
 ```
 
-## Workspace Features
+### 🌐 API Services Layer
+- **Gateway Service**: Centralized entry point with routing, authentication, and monitoring
+- **Overture Service**: Geographic data processing and Overture Maps integration
+- **TomTom Flow Service**: Real-time traffic data processing and analytics
 
-- **uv-based dependency management**: Fast, reliable Python package management
-- **Workspace isolation**: Each project has its own dependencies while sharing core utilities
-- **Standardized tooling**: Consistent development patterns across all projects
-- **Cloud-native**: Built for Google Cloud Platform with best practices
-- **Local development**: Easy setup and testing with automated scripts
+### 🔄 Data Processing Layer
+- **TomTom Traffic Pipeline**: Automated data collection with intelligent scheduling
+- **OpenLR Processing**: Binary traffic data conversion to standard formats
+- **BigQuery Integration**: Efficient data warehousing with partitioning strategies
 
-## Development Workflow
+### 🛠️ Infrastructure Layer
+- **Shared Utilities**: Common logging, monitoring, and development tools
+- **Cloud-Native Design**: Google Cloud Platform integration and best practices
+- **Standardized Tooling**: Consistent development patterns across all projects
 
-### Adding a New Project
-1. Create a new project in the workspace:
-   ```bash
-   cd proj/
-   uv init <project-name>
-   ```
-2. Add project to workspace members in root `pyproject.toml`
-3. Add dependencies using `uv add <dependency-name>`
-4. Add `core` as a workspace dependency if needed: `uv add core --editable`
-5. Follow the established patterns for deployment and local development
+## 🚀 Key Capabilities
 
-### Working with Existing Projects
-```bash
-# Install all workspace dependencies
-uv sync --all-projects
+### 📊 Data Processing
+- **Real-time ingestion**: Live traffic flow data collection and processing
+- **Batch processing**: Historical data analysis and reporting
+- **Spatial operations**: Geographic data transformation and analysis
+- **Format conversion**: OpenLR to WKT geometry processing
 
-# Run a specific project (example: TomTom pipeline)
-./proj/tomtom_intermediate_traffic/run-local.sh
+### 🔧 Infrastructure
+- **Scalable architecture**: Auto-scaling on Google Cloud Platform
+- **Efficient storage**: BigQuery partitioning and compression
+- **Automated scheduling**: Cloud Run Jobs with Cloud Scheduler
+- **Monitoring & logging**: Comprehensive observability stack
 
-# Add dependencies to a project
-cd proj/your_project
-uv add your-dependency
+### 🌐 API Features
+- **RESTful APIs**: Standard HTTP interfaces for all services
+- **Authentication**: Secure access control and API key management
+- **Rate limiting**: Protection against abuse and overuse
+- **Documentation**: Interactive API documentation and examples
+
+## 🔍 Quick Navigation
+
+| 🎯 I want to... | 📍 Go here |
+|------------------|------------|
+| **Understand the system** | [Architecture Overview](#-architecture-overview) |
+| **Set up API gateway** | [Gateway Documentation](projects/apis/gateway/README.md) |
+| **Work with maps data** | [Overture Maps Guide](projects/apis/overture/README.md) |
+| **Process traffic data** | [TomTom Flow API](projects/apis/tomtom-flow/README.md) |
+| **Set up data pipeline** | [Traffic Pipeline Guide](projects/tomtom-intermediate-traffic/README.md) |
+| **Handle geographic data** | [Geography Input Guide](guides/geography-input.md) |
+| **Use utility scripts** | [Utilities Documentation](utilities/scripts.md) |
+| **Deploy to production** | [Gateway Deployment](projects/apis/gateway/deployment.md) |
+
+## 🔗 External Resources
+
+### 📖 Documentation & Guides
+- **[Main Repository](https://github.com/ether-data/mux-mesh)** - Source code and development setup
+- **[Google Cloud Documentation](https://cloud.google.com/docs)** - Platform documentation
+- **[BigQuery Documentation](https://cloud.google.com/bigquery/docs)** - Data warehouse setup
+
+### 🌐 Data Sources & APIs
+- **[TomTom Traffic API](https://developer.tomtom.com/traffic-api)** - Real-time traffic data
+- **[Overture Maps](https://overturemaps.org/)** - Open geographic data
+- **[OpenLR Specification](https://www.openlr.org/)** - Location referencing standard
+
+### 🛠️ Development Tools
+- **[uv Package Manager](https://docs.astral.sh/uv/)** - Python dependency management
+- **[FastAPI Documentation](https://fastapi.tiangolo.com/)** - API framework
+- **[Google Cloud SDK](https://cloud.google.com/sdk)** - Cloud deployment tools
+
+## 📄 Repository Structure
+
+```
+mux-mesh-docs/
+├── 📁 projects/
+│   ├── 📁 apis/
+│   │   ├── 📁 gateway/          # API Gateway documentation
+│   │   ├── 📁 overture/         # Overture Maps service docs
+│   │   └── 📁 tomtom-flow/      # TomTom Flow API docs
+│   └── 📁 tomtom-intermediate-traffic/  # Data pipeline docs
+├── 📁 guides/                   # User guides and tutorials
+├── 📁 utilities/                # Tools and scripts documentation
+└── 📄 README.md                 # This documentation hub
 ```
