@@ -65,44 +65,31 @@ Essential documentation for users and developers:
 
 ### System Components
 
-```
-                              🌐 API Layer
-    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-    │   API Gateway   │    │  Overture Maps  │    │  TomTom Flow    │
-    │      🚪         │    │      🗺️          │    │      🚦         │
-    │ • Routing       │    │ • Places Data   │    │ • Traffic Data  │
-    │ • Auth          │    │ • Semantic Map  │    │ • Real-time     │
-    │ • Rate Limit    │    │ • POI Queries   │    │ • Analytics     │
-    └─────────────────┘    └─────────────────┘    └─────────────────┘
-             │                       │                       │
-             └───────────────────────┼───────────────────────┘
-                                     │
-                              🔧 Processing Layer
-                         ┌─────────────────┐
-                         │  Core Services  │
-                         │      🛠️         │
-                         │ • Logging       │
-                         │ • Utilities     │
-                         │ • Shared Tools  │
-                         └─────────────────┘
-                                     │
-                              🔄 Pipeline Layer
-                         ┌─────────────────┐
-                         │ TomTom Pipeline │
-                         │      📊         │
-                         │ • Data Collect  │
-                         │ • OpenLR Proc   │
-                         │ • Scheduling    │
-                         └─────────────────┘
-                                     │
-                              💾 Storage Layer
-                         ┌─────────────────┐
-                         │    BigQuery     │
-                         │      🏢         │
-                         │ • Data Warehouse│
-                         │ • Partitioning  │
-                         │ • Analytics     │
-                         └─────────────────┘
+```mermaid
+graph TB
+    subgraph "🌐 API Layer"
+        GW["🚪 API Gateway<br/>• Routing<br/>• Auth<br/>• Rate Limit"]
+        OM["🗺️ Overture Maps<br/>• Places Data<br/>• Semantic Map<br/>• POI Queries"]
+        TF["🚦 TomTom Flow<br/>• Traffic Data<br/>• Real-time<br/>• Analytics"]
+    end
+    
+    subgraph "🔧 Processing Layer"
+        CS["🛠️ Core Services<br/>• Logging<br/>• Utilities<br/>• Shared Tools"]
+    end
+    
+    subgraph "🔄 Pipeline Layer"
+        TP["📊 TomTom Pipeline<br/>• Data Collect<br/>• OpenLR Proc<br/>• Scheduling"]
+    end
+    
+    subgraph "💾 Storage Layer"
+        BQ["🏢 BigQuery<br/>• Data Warehouse<br/>• Partitioning<br/>• Analytics"]
+    end
+    
+    GW --> CS
+    OM --> CS
+    TF --> CS
+    CS --> TP
+    TP --> BQ
 ```
 
 ### 🌐 API Services Layer
