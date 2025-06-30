@@ -1,0 +1,48 @@
+# Jekyll Configuration for Mux-Mesh Documentation
+
+# Site settings
+title: "Mux-Mesh Documentation"
+description: "Comprehensive documentation for the Mux-Mesh spatio-temporal data workspace"
+url: "https://ether-data.github.io"
+baseurl: "/mux-mesh-docs"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: jekyll-theme-modernist
+
+# Exclude from processing
+exclude:
+  - scripts/           # Build tools and diagram generation scripts
+  - diagrams/          # Mermaid source files (.mmd)
+  - package.json       # Node.js package configuration
+  - package-lock.json  # Node.js lock file
+  - node_modules/      # Node.js dependencies (if installed locally)
+  - .gitignore         # Git configuration
+  - SETUP.md           # Internal setup documentation
+  - "*.tmp"            # Temporary files
+  - "*.temp"           # Temporary files
+  - ".vscode/"         # VS Code settings
+  - ".idea/"           # JetBrains IDE settings
+
+# Include important files
+include:
+  - images/            # Generated SVG diagrams (explicitly include)
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-optional-front-matter
+
+# Markdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Theme settings
+show_downloads: false
+google_analytics: # Add your GA tracking ID here if needed 

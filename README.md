@@ -29,6 +29,11 @@ Our microservices architecture provides specialized data processing capabilities
   - Authentication, rate limiting, and load balancing
   - **[📋 Deployment Guide](projects/apis/gateway/deployment.md)**
 
+- **[📊 Census Data](projects/apis/census/README.md)**
+  - US Census demographic data API with natural language querying
+  - Flexible geography inputs (ZIP, DMA, city, county, coordinates, etc.)
+  - AI-powered SQL generation and H3 spatial indexing
+
 - **[🗺️ Overture Maps](projects/apis/overture/README.md)**
   - Open geographic data processing and serving
   - Overture Maps data integration and API endpoints
@@ -61,36 +66,16 @@ Essential documentation for users and developers:
   - Automation helpers and maintenance scripts
   - Development workflow enhancements
 
+- **[📊 Diagram Generation](SETUP.md)**
+  - Setup guide for Mermaid diagram generation
+  - Universal compatibility with high-quality SVG output
+  - Automated tooling for maintaining visual documentation
+
 ## 🏗️ Architecture Overview
 
 ### System Components
 
-```mermaid
-graph TB
-    subgraph "🌐 API Layer"
-        GW["🚪 API Gateway<br/>• Routing<br/>• Auth<br/>• Rate Limit"]
-        OM["🗺️ Overture Maps<br/>• Places Data<br/>• Semantic Map<br/>• POI Queries"]
-        TF["🚦 TomTom Flow<br/>• Traffic Data<br/>• Real-time<br/>• Analytics"]
-    end
-    
-    subgraph "🔧 Processing Layer"
-        CS["🛠️ Core Services<br/>• Logging<br/>• Utilities<br/>• Shared Tools"]
-    end
-    
-    subgraph "🔄 Pipeline Layer"
-        TP["📊 TomTom Pipeline<br/>• Data Collect<br/>• OpenLR Proc<br/>• Scheduling"]
-    end
-    
-    subgraph "💾 Storage Layer"
-        BQ["🏢 BigQuery<br/>• Data Warehouse<br/>• Partitioning<br/>• Analytics"]
-    end
-    
-    GW --> CS
-    OM --> CS
-    TF --> CS
-    CS --> TP
-    TP --> BQ
-```
+![System Architecture](./images/architecture.svg)
 
 ### 🌐 API Services Layer
 - **Gateway Service**: Centralized entry point with routing, authentication, and monitoring
@@ -133,11 +118,13 @@ graph TB
 |------------------|------------|
 | **Understand the system** | [Architecture Overview](#️-architecture-overview) |
 | **Set up API gateway** | [Gateway Documentation](projects/apis/gateway/README.md) |
+| **Query census data** | [Census API Guide](projects/apis/census/README.md) |
 | **Work with maps data** | [Overture Maps Guide](projects/apis/overture/README.md) |
 | **Process traffic data** | [TomTom Flow API](projects/apis/tomtom-flow/README.md) |
 | **Set up data pipeline** | [Traffic Pipeline Guide](projects/tomtom-intermediate-traffic/README.md) |
 | **Handle geographic data** | [Geography Input Guide](guides/geography-input.md) |
 | **Use utility scripts** | [Utilities Documentation](utilities/scripts.md) |
+| **Generate diagrams** | [Diagram Setup Guide](SETUP.md) |
 | **Deploy to production** | [Gateway Deployment](projects/apis/gateway/deployment.md) |
 
 ## 🔗 External Resources
@@ -161,13 +148,25 @@ graph TB
 
 ```
 mux-mesh-docs/
-├── 📁 projects/
+├── 📁 projects/                 # 🌐 Published to website
 │   ├── 📁 apis/
 │   │   ├── 📁 gateway/          # API Gateway documentation
+│   │   ├── 📁 census/           # Census API documentation
 │   │   ├── 📁 overture/         # Overture Maps service docs
 │   │   └── 📁 tomtom-flow/      # TomTom Flow API docs
 │   └── 📁 tomtom-intermediate-traffic/  # Data pipeline docs
-├── 📁 guides/                   # User guides and tutorials
-├── 📁 utilities/                # Tools and scripts documentation
-└── 📄 README.md                 # This documentation hub
+├── 📁 guides/                   # 🌐 User guides and tutorials
+├── 📁 utilities/                # 🌐 Tools and scripts documentation  
+├── 📁 images/                   # 🌐 Generated SVG diagrams (universal compatibility)
+├── 📁 diagrams/                 # 🔧 Mermaid source files (.mmd) - build only
+├── 📁 scripts/                  # 🔧 Diagram generation tools - build only
+├── 📄 package.json              # 🔧 Node.js configuration - build only
+├── 📄 SETUP.md                  # 🔧 Internal setup guide - build only
+├── 📄 _config.yml               # ⚙️ Jekyll configuration
+└── 📄 README.md                 # 🌐 Documentation hub
 ```
+
+**Legend:**
+- 🌐 Published to GitHub Pages website
+- 🔧 Build tools (excluded from website)
+- ⚙️ Configuration files

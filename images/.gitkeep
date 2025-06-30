@@ -1,0 +1,6 @@
+# Images Directory
+
+This directory contains static SVG versions of Mermaid diagrams for universal compatibility.
+
+Generated diagrams:
+- architecture.svg - System architecture overview diagram (scalable vector graphics) 

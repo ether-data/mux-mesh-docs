@@ -1,0 +1,42 @@
+{
+  "name": "mux-mesh-docs",
+  "version": "1.0.0",
+  "description": "Documentation for the Mux-Mesh spatio-temporal data workspace",
+  "private": true,
+  "scripts": {
+    "generate-diagrams": "node scripts/generate-diagrams.js",
+    "setup": "npm install -g @mermaid-js/mermaid-cli",
+    "clean-images": "find images/ -name '*.svg' -delete",
+    "regenerate": "npm run clean-images && npm run generate-diagrams",
+    "check-mermaid": "mmdc --version",
+    "help": "echo 'Available scripts: setup, generate-diagrams, clean-images, regenerate, check-mermaid'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ether-data/mux-mesh-docs.git"
+  },
+  "keywords": [
+    "documentation",
+    "mermaid",
+    "diagrams",
+    "github-pages",
+    "spatial-data"
+  ],
+  "author": "Ether Data Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.6.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "files": [
+    "diagrams/",
+    "images/",
+    "scripts/",
+    "projects/",
+    "guides/",
+    "utilities/"
+  ]
+} 

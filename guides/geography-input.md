@@ -126,6 +126,42 @@ All geography inputs use a `kind` field as a discriminator to determine the spec
 - Resolution 0-15 (0 = largest, 15 = smallest)
 - Global coverage with minimal distortion
 
+### City
+
+**Purpose**: US cities and Census Designated Places (CDPs)  
+**Data Source**: BigQuery public datasets (`bigquery-public-data.geo_us_boundaries.places`)
+
+```json
+{
+  "kind": "city",
+  "name": "Essex",
+  "state": "MA"
+}
+```
+
+**Fields**:
+- `kind`: Always `"city"`
+- `name`: City or Census Designated Place name (examples: "Essex", "San Francisco")
+- `state`: Two-letter state code (pattern: `^[A-Z]{2}$`, examples: "MA", "CA")
+
+### County
+
+**Purpose**: US counties and parishes  
+**Data Source**: BigQuery public datasets (`bigquery-public-data.geo_us_boundaries.counties`)
+
+```json
+{
+  "kind": "county",
+  "name": "Alameda",
+  "state": "CA"
+}
+```
+
+**Fields**:
+- `kind`: Always `"county"`
+- `name`: County or parish name without "County" suffix (examples: "Alameda", "Essex")
+- `state`: Two-letter state code (pattern: `^[A-Z]{2}$`, examples: "CA", "MA")
+
 ## API Integration
 
 ### Request Examples
@@ -160,19 +196,42 @@ curl -X POST "https://api.example.com/places/count" \
   }'
 ```
 
+**Using City**:
+```bash
+curl -X POST "https://api.example.com/census/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "geography": {"kind": "city", "name": "Essex", "state": "MA"},
+    "query": "What is the total population?"
+  }'
+```
+
+**Using County**:
+```bash
+curl -X POST "https://api.example.com/census/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "geography": {"kind": "county", "name": "Alameda", "state": "CA"},
+    "query": "median household income"
+  }'
+```
+
 ## Best Practices
 
 ### Choosing the Right Geography Type
 
-1. **ZIP Code**: Use for standard US postal analysis
+1. **ZIP Code**: Use for standard US postal analysis and demographic studies
 2. **DMA Code**: Use for media/broadcast market analysis  
-3. **Lat/Lon Point**: Use for location-based searches with known coordinates
-4. **WKT**: Use for custom boundaries or GIS integration
-5. **H3 Index**: Use for spatial analytics and grid-based analysis
+3. **City**: Use for municipal-level analysis and urban area studies
+4. **County**: Use for administrative boundary analysis and regional demographics
+5. **Lat/Lon Point**: Use for location-based searches with known coordinates
+6. **WKT**: Use for custom boundaries or GIS integration
+7. **H3 Index**: Use for spatial analytics and grid-based analysis
 
 ### Performance Considerations
 
 - **ZIP/DMA lookups**: Require database/file access, may be slower
+- **City/County lookups**: Require BigQuery database access for boundary resolution
 - **Point geometries**: Fastest for simple coordinates
 - **Buffered points**: Number of polygon sides is a tradeoff between speed and accuracy
 - **WKT**: Universal for complex shapes

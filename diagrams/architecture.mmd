@@ -1,0 +1,26 @@
+graph TB
+    subgraph "🌐 API Layer"
+        GW["🚪 API Gateway<br/>• Routing<br/>• Auth<br/>• Rate Limit"]
+        CD["📊 Census Data<br/>• Demographics<br/>• Natural Lang<br/>• AI SQL Gen"]
+        OM["🗺️ Overture Maps<br/>• Places Data<br/>• Semantic Map<br/>• POI Queries"]
+        TF["🚦 TomTom Flow<br/>• Traffic Data<br/>• Real-time<br/>• Analytics"]
+    end
+    
+    subgraph "🔧 Processing Layer"
+        CS["🛠️ Core Services<br/>• Logging<br/>• Utilities<br/>• Shared Tools"]
+    end
+    
+    subgraph "🔄 Pipeline Layer"
+        TP["📊 TomTom Pipeline<br/>• Data Collect<br/>• OpenLR Proc<br/>• Scheduling"]
+    end
+    
+    subgraph "💾 Storage Layer"
+        BQ["🏢 BigQuery<br/>• Data Warehouse<br/>• Partitioning<br/>• Analytics"]
+    end
+    
+    GW --> CS
+    CD --> CS
+    OM --> CS
+    TF --> CS
+    CS --> TP
+    TP --> BQ 
