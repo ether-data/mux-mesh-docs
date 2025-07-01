@@ -3,7 +3,7 @@
 > **Comprehensive documentation for the Mux-Mesh spatio-temporal data workspace**
 
 [![GitHub](https://img.shields.io/badge/Source-GitHub-blue)](https://github.com/ether-data/mux-mesh)
-[![Documentation](https://img.shields.io/badge/Docs-Latest-green)](https://github.com/ether-data/mux-mesh-docs)
+[![Documentation](https://img.shields.io/badge/Docs-Latest-green)](https://docs.etherdata.ai)
 
 ## 🌟 Welcome
 

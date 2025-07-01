@@ -160,9 +160,39 @@ mmdc --version
 - Check file paths in markdown (relative to document)
 - Verify GitHub Pages is properly configured
 
+### Custom Domain Issues
+If links are broken after setting up custom domain:
+
+1. **Check Jekyll Configuration**:
+   ```yaml
+   url: "https://docs.etherdata.ai"
+   baseurl: ""  # Empty for custom domains
+   ```
+
+2. **Verify CNAME File**:
+   - File should contain only: `docs.etherdata.ai`
+   - Located in repository root
+   - No trailing newlines or extra characters
+
+3. **DNS Configuration**:
+   ```
+   CNAME docs.etherdata.ai -> ether-data.github.io
+   ```
+
+4. **GitHub Pages Settings**:
+   - Custom domain field should show: `docs.etherdata.ai`
+   - HTTPS should be enforced
+   - Wait 10-15 minutes for DNS propagation
+
 ## ⚙️ GitHub Pages Configuration
 
 This repository includes a `_config.yml` file that optimizes the Jekyll build for GitHub Pages using the modern, professional **Modernist theme**:
+
+### Custom Domain Setup
+The site is configured for the custom domain **docs.etherdata.ai**:
+- **CNAME file**: Contains `docs.etherdata.ai` for GitHub Pages custom domain
+- **Jekyll config**: URL set to `https://docs.etherdata.ai` with empty baseurl
+- **DNS**: Domain should point to GitHub Pages IP addresses
 
 ### Theme Features
 - **Clean Design**: Minimalist layout focused on content readability
