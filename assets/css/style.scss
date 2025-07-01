@@ -7,7 +7,7 @@
 
 /* Base font size - adjust this to scale everything */
 body {
-  font-size: 16px; /* Default: 14px, try 16px, 18px, or 20px */
+  font-size: 18px; /* Equivalent to ~110% browser zoom */
   line-height: 1.6;
 }
 
@@ -62,7 +62,7 @@ nav {
 /* Responsive font scaling */
 @media (max-width: 768px) {
   body {
-    font-size: 14px; /* Smaller on mobile */
+    font-size: 16px; /* Reasonable on mobile */
   }
   
   h1 { font-size: 2em; }
@@ -72,6 +72,6 @@ nav {
 
 @media (min-width: 1200px) {
   body {
-    font-size: 18px; /* Larger on big screens */
+    font-size: 20px; /* Even larger on big screens = ~125% zoom */
   }
 } 
