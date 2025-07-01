@@ -1,4 +1,4 @@
-# Mux-Mesh Documentation
+# Ether Data Documentation
 
 > **Comprehensive documentation for the Mux-Mesh spatio-temporal data workspace**
 

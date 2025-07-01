@@ -1,8 +1,8 @@
 # Jekyll Configuration for Mux-Mesh Documentation
 
 # Site settings
-title: "Mux-Mesh Documentation"
-description: "Comprehensive documentation for the Mux-Mesh spatio-temporal data workspace"
+title: "Ether Data Documentation"
+description: "Comprehensive documentation for the Ether Data spatio-temporal data workspace"
 url: "https://docs.etherdata.ai"
 baseurl: ""
 
