@@ -66,11 +66,6 @@ Essential documentation for users and developers:
   - Automation helpers and maintenance scripts
   - Development workflow enhancements
 
-- **[📊 Diagram Generation](SETUP.md)**
-  - Setup guide for Mermaid diagram generation
-  - Universal compatibility with high-quality SVG output
-  - Automated tooling for maintaining visual documentation
-
 ## 🏗️ Architecture Overview
 
 ### System Components
@@ -144,29 +139,3 @@ Essential documentation for users and developers:
 - **[FastAPI Documentation](https://fastapi.tiangolo.com/)** - API framework
 - **[Google Cloud SDK](https://cloud.google.com/sdk)** - Cloud deployment tools
 
-## 📄 Repository Structure
-
-```
-mux-mesh-docs/
-├── 📁 projects/                 # 🌐 Published to website
-│   ├── 📁 apis/
-│   │   ├── 📁 gateway/          # API Gateway documentation
-│   │   ├── 📁 census/           # Census API documentation
-│   │   ├── 📁 overture/         # Overture Maps service docs
-│   │   └── 📁 tomtom-flow/      # TomTom Flow API docs
-│   └── 📁 tomtom-intermediate-traffic/  # Data pipeline docs
-├── 📁 guides/                   # 🌐 User guides and tutorials
-├── 📁 utilities/                # 🌐 Tools and scripts documentation  
-├── 📁 images/                   # 🌐 Generated SVG diagrams (universal compatibility)
-├── 📁 diagrams/                 # 🔧 Mermaid source files (.mmd) - build only
-├── 📁 scripts/                  # 🔧 Diagram generation tools - build only
-├── 📄 package.json              # 🔧 Node.js configuration - build only
-├── 📄 SETUP.md                  # 🔧 Internal setup guide - build only
-├── 📄 _config.yml               # ⚙️ Jekyll configuration
-└── 📄 README.md                 # 🌐 Documentation hub
-```
-
-**Legend:**
-- 🌐 Published to GitHub Pages website
-- 🔧 Build tools (excluded from website)
-- ⚙️ Configuration files
