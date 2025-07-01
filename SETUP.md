@@ -224,9 +224,6 @@ To customize the Modernist theme:
 
 Example custom CSS (`assets/css/style.scss`):
 ```scss
----
----
-
 @import "{{ site.theme }}";
 
 // Custom overrides here
@@ -234,6 +231,40 @@ Example custom CSS (`assets/css/style.scss`):
   max-width: 1200px; // Wider content area
 }
 ```
+
+## 📖 Documentation Development
+
+### Diagram Generation
+// ... existing code ...
+
+### Font Size Customization
+
+The site supports custom font sizing through `assets/css/style.scss`:
+
+**Quick Adjustments**:
+```scss
+body {
+  font-size: 16px; /* Change from 14px (small) to 20px (large) */
+}
+```
+
+**Available Font Sizes**:
+- **Small**: `14px` - Compact, more content per screen
+- **Medium**: `16px` - Standard web size (current)
+- **Large**: `18px` - Better readability
+- **Extra Large**: `20px` - High accessibility
+
+**Individual Elements**:
+```scss
+h1 { font-size: 2.2em; }  /* Main headings */
+h2 { font-size: 1.8em; }  /* Section headings */
+p  { font-size: 1em; }    /* Body text */
+code { font-size: 0.95em; } /* Code snippets */
+```
+
+**Responsive Design**: Fonts automatically scale for mobile and desktop viewing.
+
+After making changes, commit and push to see updates on the live site.
 
 ## 📚 Resources
 
