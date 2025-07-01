@@ -22,7 +22,7 @@
     "github-pages",
     "spatial-data"
   ],
-  "author": "Ether Data Team",
+  "author": "Ether Data",
   "license": "MIT",
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.6.1"

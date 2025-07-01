@@ -24,7 +24,7 @@ npm install -g @mermaid-js/mermaid-cli
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/your-org/mux-mesh-docs.git
+git clone https://github.com/ether-data/mux-mesh-docs.git
 cd mux-mesh-docs
 ```
 

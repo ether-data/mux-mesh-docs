@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate PNG diagrams from Mermaid source files
+ * Generate SVG diagrams from Mermaid source files
  * 
  * Prerequisites:
  * npm install -g @mermaid-js/mermaid-cli
