@@ -15,7 +15,7 @@ The API Gateway serves as the single point of entry for all client requests, rou
 
 ## Architecture
 
-<img src="../../../images/gateway-architecture.svg" alt="Gateway Architecture" style="width: 100%; max-width: 800px; height: auto;">
+![Gateway Architecture](../../../images/gateway-architecture.svg)
 
 The API Gateway serves as a unified entry point that routes client requests to specialized microservices, each connected to their respective data sources and featuring unique capabilities.
 
