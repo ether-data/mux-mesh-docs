@@ -15,18 +15,33 @@ The API Gateway serves as the single point of entry for all client requests, rou
 
 ## Architecture
 
-```
-Client Requests
-      ↓
-API Gateway (Port 8000)
-      ↓
-┌─────────────────┬─────────────────┐
-│   /overture     │  /tomtom-flow   │
-│                 │                 │
-│ Overture API    │  TomTom API     │
-│ (Places/POIs)   │  (Traffic)      │
-└─────────────────┴─────────────────┘
-```
+![Gateway Architecture](../../../images/gateway-architecture.svg)
+
+The API Gateway serves as a unified entry point that routes client requests to specialized microservices, each connected to their respective data sources and featuring unique capabilities.
+
+### Service Overview
+
+**📊 Census API** (`/census`)
+- **Purpose**: US demographic data with natural language querying
+- **Data Source**: BigQuery GCP with H3 spatial indexing
+- **Features**: AI-powered SQL generation, flexible geography inputs
+
+**🗺️ Overture API** (`/overture`) 
+- **Purpose**: Places and points of interest with spatial queries
+- **Data Source**: Overture Maps open geographic data
+- **Features**: Category mapping, spatial data processing
+
+**🚦 TomTom Flow API** (`/tomtom-flow`)
+- **Purpose**: Real-time traffic flow analytics
+- **Data Source**: TomTom API live traffic feeds
+- **Features**: Traffic analytics, real-time monitoring
+
+### Key Benefits
+
+- **Single Entry Point**: One gateway URL for all services
+- **Unified Documentation**: Combined OpenAPI specs at `/docs`
+- **Health Monitoring**: Centralized health checks across all services
+- **Flexible Geography**: Consistent geography input handling across APIs
 
 ## Quick Start
 
@@ -82,7 +97,7 @@ The gateway can be configured via environment variables:
 
 ```bash
 # Gateway settings
-GATEWAY_HOST=localhost           # Production host
+GATEWAY_HOST                    # Production host
 GATEWAY_PORT=8000               # Port to run on
 ENVIRONMENT=development         # Environment (development/staging/production)
 

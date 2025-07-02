@@ -1,0 +1,27 @@
+graph TD
+    A["👤 Client Requests"] --> B["🌐 API Gateway"]
+    
+    B --> C["📊 /census<br/>Census API"]
+    B --> D["🗺️ /overture<br/>Overture API"] 
+    B --> E["🚦 /tomtom-flow<br/>TomTom API"]
+    
+    C --> F["💾 BigQuery GCP<br/>H3 Spatial Indexing"]
+    D --> G["🌍 Overture Maps<br/>Open Geo Data"]
+    E --> H["🚨 TomTom API<br/>Live Traffic Data"]
+    
+    C -.-> I["🧠 Natural Language<br/>SQL Generation"]
+    C -.-> J["📍 Geography Input<br/>Flexible Formats"]
+    
+    D -.-> K["🏢 Places & POIs<br/>Spatial Queries"]
+    
+    E -.-> L["📊 Real-time Analytics<br/>Traffic Flow"]
+    
+    classDef gateway fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef service fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef datasource fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef feature fill:#fff3e0,stroke:#e65100,stroke-width:1px
+    
+    class B gateway
+    class C,D,E service
+    class F,G,H datasource
+    class I,J,K,L feature
