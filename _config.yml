@@ -20,6 +20,7 @@ exclude:
   - node_modules/      # Node.js dependencies (if installed locally)
   - .gitignore         # Git configuration
   - SETUP.md           # Internal setup documentation
+  - utilities/cursor-rules.md  # Internal Cursor rules documentation
   - "*.tmp"            # Temporary files
   - "*.temp"           # Temporary files
   - ".vscode/"         # VS Code settings

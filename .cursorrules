@@ -1,0 +1,153 @@
+# Ether Data Documentation Rules
+# Codifies processes for maintaining mux-mesh-docs repository
+
+## Repository Structure & Management
+
+### Documentation Repository vs Main Repository
+- README files in main mux-mesh repo should NOT be modified directly
+- All README updates must be made in mux-mesh-docs repository
+- Main repo READMEs should only contain minimal project info and link to docs site
+- Comprehensive documentation lives in mux-mesh-docs/projects/apis/[service-name]/
+
+### File Organization Patterns
+```
+mux-mesh-docs/
+├── projects/apis/[service]/README.md    # Comprehensive API documentation
+├── guides/[topic].md                    # Cross-cutting guides (geography-input, etc.)
+├── diagrams/[name].mmd                  # Mermaid source files
+├── images/[name].svg                    # Generated diagrams
+├── assets/css/style.scss                # Custom styling
+└── SETUP.md                            # Internal development docs
+```
+
+## Jekyll & GitHub Pages Configuration
+
+### Custom Domain Setup
+- When using custom domain (docs.etherdata.ai), always:
+  - Set `url: "https://docs.etherdata.ai"` in _config.yml
+  - Set `baseurl: ""` (empty) for custom domains
+  - Ensure CNAME file contains only domain name
+  - Update all documentation badges to link to custom domain
+
+### Theme Customization
+- Use `jekyll-theme-modernist` for professional appearance
+- Custom CSS goes in `assets/css/style.scss` with Jekyll front matter:
+```scss
+---
+---
+@import "{{ site.theme }}";
+/* Custom overrides here */
+```
+
+### Font Size Standards
+- Base font size: 18px (equivalent to ~110% browser zoom)
+- Responsive scaling: 16px mobile, 18px desktop, 20px large screens
+- Maintain proportional heading hierarchy (h1: 2.2em, h2: 1.8em, etc.)
+
+## Diagram Generation Workflow
+
+### Mermaid to SVG Process
+1. Edit source files in `diagrams/[name].mmd`
+2. Generate SVG: `npm run generate-diagrams`
+3. Commit both .mmd source and .svg output
+4. Reference in markdown: `![Description](./images/diagram.svg)`
+
+### Universal Compatibility
+- Always generate static SVG files (not conditional Mermaid rendering)
+- SVG works on GitHub, GitHub Pages, and any documentation platform
+- Scale factor: 2 for high-quality rendering
+
+## API Documentation Patterns
+
+### Service Documentation Structure
+Each API service should have comprehensive docs in `projects/apis/[service]/README.md`:
+
+```markdown
+# [Service Name] API
+
+## Overview
+Brief description with supported features
+
+## Quick Start
+Installation and basic usage
+
+## Geography Input Examples
+Include all supported geography types with examples
+
+## API Reference
+Detailed endpoint documentation
+
+## Integration Examples
+Python and JavaScript code samples
+
+## Performance Considerations
+Optimization guidance
+```
+
+### Geography Input Documentation
+- Maintain centralized guide in `guides/geography-input.md`
+- Include examples for all geography types (city, county, state, etc.)
+- Show field requirements and validation rules
+- Provide integration examples across services
+
+## Content Update Process
+
+### When Adding New Services
+1. Create comprehensive docs in `projects/apis/[service]/README.md`
+2. Add service to main documentation hub (README.md)
+3. Update architecture diagrams if needed
+4. Update geography input guide if new types supported
+5. Add to quick navigation table
+
+### When Modifying Existing Services
+1. Update service-specific documentation first
+2. Update cross-cutting guides if interfaces change
+3. Regenerate diagrams if architecture changes
+4. Update integration examples if API changes
+
+## Build & Deployment
+
+### GitHub Pages Optimization
+- Exclude build tools: scripts/, diagrams/, package.json from Jekyll build
+- Include generated assets: images/ directory
+- Use clean syntax highlighting without line numbers
+- Disable theme downloads for cleaner appearance
+
+### Development Workflow
+1. Make documentation changes
+2. Generate diagrams if needed: `npm run generate-diagrams`
+3. Test locally if major changes
+4. Commit and push (auto-deploys via GitHub Pages)
+5. Wait 5-10 minutes for live site update
+
+## Custom Domain Troubleshooting
+
+### Broken Links After Domain Change
+1. Update Jekyll _config.yml: url and baseurl
+2. Verify CNAME file contains correct domain
+3. Update documentation badges and links
+4. Check DNS CNAME configuration
+5. Wait for DNS propagation (10-15 minutes)
+
+## Styling Guidelines
+
+### CSS Customization
+- Browser zoom equivalent font sizes are preferred
+- Maintain responsive design for all screen sizes
+- Use semantic color schemes (avoid custom colors)
+- Keep accessibility in mind (contrast, font sizes)
+
+### Visual Consistency
+- Use emoji prefixes for section headers (🎯, 📚, ⚙️)
+- Maintain consistent badge styling
+- Use code blocks for examples and configuration
+- Include both Python and JavaScript examples where applicable
+
+## Memory Management
+
+### Key Patterns to Remember
+- README management: docs repo only, never main repo
+- Custom domain requires empty baseurl in Jekyll
+- SVG generation for universal diagram compatibility
+- Font sizing matches browser zoom preferences
+- FastAPI mounting issues with MCP protocol (use route decorators) 
