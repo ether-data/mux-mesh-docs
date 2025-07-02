@@ -119,7 +119,6 @@ Essential documentation for users and developers:
 | **Set up data pipeline** | [Traffic Pipeline Guide](projects/tomtom-intermediate-traffic/README.md) |
 | **Handle geographic data** | [Geography Input Guide](guides/geography-input.md) |
 | **Use utility scripts** | [Utilities Documentation](utilities/scripts.md) |
-| **Generate diagrams** | [Diagram Setup Guide](SETUP.md) |
 | **Deploy to production** | [Gateway Deployment](projects/apis/gateway/deployment.md) |
 
 ## 🔗 External Resources
