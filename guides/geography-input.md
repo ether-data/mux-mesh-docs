@@ -76,12 +76,13 @@ All geography inputs use a `kind` field as a discriminator to determine the spec
 - `inscribed`: Whether vertices lie on circle boundary (default: true)
 
 **Circle Approximation Quality**:
+
 | Sides | Deviation from Circle |
 |-------|----------------------|
-| 6     | 13.4%               |
-| 8     | 7.6%                |
-| 12    | 3.4%                |
-| 20    | 1.2%                |
+| 6     | 13.4%                |
+| 8     | 7.6%                 |
+| 12    | 3.4%                 |
+| 20    | 1.2%                 |
 
 ### WKT Geometry
 
