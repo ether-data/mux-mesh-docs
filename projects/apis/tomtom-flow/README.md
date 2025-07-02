@@ -88,25 +88,31 @@ Query real-time traffic summary, including average relative speed and overall tr
 
 *Note: In the table below, an asterisk (`*`) in the "MARK" column indicates that the segment is part of a group of sub-segments belonging to the same original OpenLR location reference.*
 
-| MARK | OPENLR_HASH | START_OFFSET_M | TOTAL_LEN_M | ADJUSTED_LEN_M | REL_SPEED | CONDITION |
-|------|-------------|----------------|-------------|----------------|-----------|-----------|
-| *    | accdb40aa1  | 0              | 5067        | 4458           | 1.000     | FREE_TRAFFIC |
-| *    | accdb40aa1  | 4458           | 5067        | 609            | 1.000     | FREE_TRAFFIC |
-|      | b4b6652ec3  | 0              | 3700        | 3700           | 1.000     | FREE_TRAFFIC |
-|      | ab1efdfb32  | 0              | 3680        | 3680           | 1.000     | FREE_TRAFFIC |
-|      | c29fd85277  | 0              | 873         | 873            | 1.000     | FREE_TRAFFIC |
-|      | 688030b810  | 0              | 20          | 20             | 0.408     | HEAVY_TRAFFIC |
-| *    | e15f37a0cd  | 0              | 5067        | 697            | 1.000     | FREE_TRAFFIC |
-| *    | e15f37a0cd  | 697            | 5067        | 4370           | 1.000     | FREE_TRAFFIC |
-|      | fbb12a0916  | 0              | 2038        | 2038           | 1.000     | FREE_TRAFFIC |
-|      | ffc7cfd837  | 0              | 63          | 63             | 0.750     | HEAVY_TRAFFIC |
-|      | 3c9d6187c6  | 0              | 873         | 873            | 1.000     | FREE_TRAFFIC |
-|      | abb2afdd6b  | 0              | 4079        | 4079           | 1.000     | FREE_TRAFFIC |
-| *    | 8c2305082e  | 0              | 4067        | 3681           | 1.000     | FREE_TRAFFIC |
-| *    | 8c2305082e  | 3681           | 4067        | 386            | 1.000     | FREE_TRAFFIC |
-| *    | 8b52042bc3  | 0              | 2038        | 901            | 0.939     | FREE_TRAFFIC |
-| *    | 8b52042bc3  | 901            | 2038        | 308            | 0.246     | HEAVY_TRAFFIC |
-| *    | 8b52042bc3  | 1209           | 2038        | 829            | 0.894     | HEAVY_TRAFFIC |
+**Column Abbreviations:**
+- `START_M`: Start offset in meters
+- `TOTAL_M`: Total length in meters  
+- `ADJ_M`: Adjusted length in meters
+- `REL_SPD`: Relative speed (0.0-1.0)
+
+| MARK | OPENLR_HASH | START_M | TOTAL_M | ADJ_M | REL_SPD | CONDITION |
+|------|-------------|---------|---------|-------|---------|-----------|
+| *    | accdb40aa1  | 0       | 5067    | 4458  | 1.000   | FREE_TRAFFIC  |
+| *    | accdb40aa1  | 4458    | 5067    | 609   | 1.000   | FREE_TRAFFIC  |
+|      | b4b6652ec3  | 0       | 3700    | 3700  | 1.000   | FREE_TRAFFIC  |
+|      | ab1efdfb32  | 0       | 3680    | 3680  | 1.000   | FREE_TRAFFIC  |
+|      | c29fd85277  | 0       | 873     | 873   | 1.000   | FREE_TRAFFIC  |
+|      | 688030b810  | 0       | 20      | 20    | 0.408   | HEAVY_TRAFFIC |
+| *    | e15f37a0cd  | 0       | 5067    | 697   | 1.000   | FREE_TRAFFIC  |
+| *    | e15f37a0cd  | 697     | 5067    | 4370  | 1.000   | FREE_TRAFFIC  |
+|      | fbb12a0916  | 0       | 2038    | 2038  | 1.000   | FREE_TRAFFIC  |
+|      | ffc7cfd837  | 0       | 63      | 63    | 0.750   | HEAVY_TRAFFIC |
+|      | 3c9d6187c6  | 0       | 873     | 873   | 1.000   | FREE_TRAFFIC  |
+|      | abb2afdd6b  | 0       | 4079    | 4079  | 1.000   | FREE_TRAFFIC  |
+| *    | 8c2305082e  | 0       | 4067    | 3681  | 1.000   | FREE_TRAFFIC  |
+| *    | 8c2305082e  | 3681    | 4067    | 386   | 1.000   | FREE_TRAFFIC  |
+| *    | 8b52042bc3  | 0       | 2038    | 901   | 0.939   | FREE_TRAFFIC  |
+| *    | 8b52042bc3  | 901     | 2038    | 308   | 0.246   | HEAVY_TRAFFIC |
+| *    | 8b52042bc3  | 1209    | 2038    | 829   | 0.894   | HEAVY_TRAFFIC |
 
 ## Scripts
 
